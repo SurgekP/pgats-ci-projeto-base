@@ -25,11 +25,7 @@
    yarn run test:mutation
    ```
 10. Abra o relatório de mutação em `reports/mutation`
-11. Execute o comando abaixo para instalar os browsers do Playwright
-    ```shell
-    npx playwright test
-    ```
-12. Execute os testes end-to-end com o Playwright
+11. Execute os testes end-to-end com o Playwright
     ```shell
     yarn run e2e
     ```
