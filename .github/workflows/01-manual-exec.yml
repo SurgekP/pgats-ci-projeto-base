@@ -1,33 +1,31 @@
-# CI de Nível 01 - Disparo manual a partir de um clique. 
+# CI de Nível 01 - Disparo manual a partir de um clique.
 
 name: 'CI Nível 01 - Execução Manual'
 
 on:
-    workflow_dispatch:
-      
+  workflow_dispatch:
 
 jobs:
-    e2e-tests:
-        runs-on: ['ubuntu-latest']
-        
-        steps:
+  e2e-tests:
+    runs-on: ['ubuntu-latest']
 
-            - uses: actions/checkout@v4
+    steps:
+      - uses: actions/checkout@v4
 
-            - name: Instalando Yarn
-              run: npm install -g yarn
+      - name: Instalando Yarn
+        run: npm install -g yarn
 
-            - name: Instalando Dependências
-              run: yarn
-            
-            - name: Instalando Playwright
-              run: yarn playwright install
+      - name: Instalando Dependências
+        run: yarn
 
-            - name: Execução de Testes E2E (end-to-end)
-              run: yarn run e2e
+      - name: Instalando Playwright
+        run: yarn playwright install
 
-            - uses: actions/upload-artifact@v4
-              if: ${{ !cancelled() }}
-              with:
-                name: relatorio-de-testes
-                path: ./playwright-report
+      - name: Execução de Testes E2E (end-to-end)
+        run: yarn run e2e
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: relatorio-de-testes
+          path: ./playwright-report
